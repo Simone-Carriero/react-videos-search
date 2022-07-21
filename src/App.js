@@ -29,23 +29,27 @@ function App() {
       }
     })
     setVideos(videos)
-    setSelectedVideo(videos[0])
+    setSelectedVideo({ id: {}, snippet: {} })
   }
+
+
 
 
   return (
     
       
-        <Grid container spacing={6}>
+        <Grid container spacing={4}>
          <Grid item xs={12}>
           <SearchBar onSubmit={handleSubmit} />
          </Grid>
-         <Grid item md={8} xs={12}>
+        <Grid item md={8} xs={12}>
           <VideoDetail video={selectedVideo} /> 
          </Grid>
-         <Grid item md={4} xs={12}>
+
+        <Grid item md={selectedVideo.id.videoId ? 4 : 12} xs={12}>
           <VideoList videos={videos} onVideoSelect={setSelectedVideo} /> 
-         </Grid>
+        </Grid>
+         
         </Grid>
       
   );
